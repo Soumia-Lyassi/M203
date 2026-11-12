@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+// ===== Étape 1 : les quatre opérations =====
+
 function additionner(float $a, float $b): float
 {
     return $a + $b;
@@ -18,9 +20,57 @@ function multiplier(float $a, float $b): float
 
 function diviser(float $a, float $b): float
 {
-    if ($b == 0) {
+    if ($b === 0.0) {
         throw new InvalidArgumentException("Division par zéro impossible");
     }
 
     return $a / $b;
+}
+
+// ===== Étape 2 : fonctions logiques =====
+
+function estPair(int $n): bool
+{
+    return $n % 2 === 0;
+}
+
+function estPositif(float $n): bool
+{
+    return $n > 0;
+}
+
+// Version sans max()
+function maximum(float $a, float $b, float $c): float
+{
+    $max = $a;
+
+    if ($b > $max) {
+        $max = $b;
+    }
+    if ($c > $max) {
+        $max = $c;
+    }
+
+    return $max;
+}
+
+// Version avec max()
+function maximumAvecMax(float $a, float $b, float $c): float
+{
+    return max($a, $b, $c);
+}
+
+function estPremier(int $n): bool
+{
+    if ($n < 2) {
+        return false; // 0, 1 et les négatifs ne sont pas premiers
+    }
+
+    for ($i = 2; $i <= floor(sqrt($n)); $i++) {
+        if ($n % $i === 0) {
+            return false; // on a trouvé un diviseur
+        }
+    }
+
+    return true; // aucun diviseur trouvé
 }
