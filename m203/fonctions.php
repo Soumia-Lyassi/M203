@@ -63,14 +63,36 @@ function maximumAvecMax(float $a, float $b, float $c): float
 function estPremier(int $n): bool
 {
     if ($n < 2) {
-        return false; // 0, 1 et les négatifs ne sont pas premiers
+        return false;
     }
 
     for ($i = 2; $i <= floor(sqrt($n)); $i++) {
         if ($n % $i === 0) {
-            return false; // on a trouvé un diviseur
+            return false;
         }
     }
 
-    return true; // aucun diviseur trouvé
+    return true;
+}
+
+// ===== Étape 3 : calculs commerciaux =====
+
+function calculerTTC(float $ht, float $tva = 20.0): float
+{
+    return $ht * (1 + $tva / 100);
+}
+
+// Retourne le prix après remise, arrondi à 2 décimales
+function calculerRemise(float $prix, float $pourcentage): float
+{
+    return round($prix - ($prix * $pourcentage / 100), 2);
+}
+
+// Réutilise calculerRemise et calculerTTC au lieu de répéter leur code
+function calculerFacture(float $prixUnitaire, int $quantite, float $remise = 0, float $tva = 20.0): float
+{
+    $total = $prixUnitaire * $quantite;
+    $apresRemise = calculerRemise($total, $remise);
+
+    return calculerTTC($apresRemise, $tva);
 }

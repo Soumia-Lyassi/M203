@@ -16,14 +16,15 @@ try {
 
 // ===== Étape 2 =====
 echo "7 est pair ? " . (estPair(7) ? "oui" : "non") . PHP_EOL;
-echo "8 est pair ? " . (estPair(8) ? "oui" : "non") . PHP_EOL;
-
 echo "5 est positif ? " . (estPositif(5) ? "oui" : "non") . PHP_EOL;
-echo "-3 est positif ? " . (estPositif(-3) ? "oui" : "non") . PHP_EOL;
-
 echo "Max de 4, 9, 6 : " . maximum(4, 9, 6) . PHP_EOL;
 echo "Max (avec max()) : " . maximumAvecMax(4, 9, 6) . PHP_EOL;
-
 echo "7 est premier ? " . (estPremier(7) ? "oui" : "non") . PHP_EOL;
 echo "10 est premier ? " . (estPremier(10) ? "oui" : "non") . PHP_EOL;
-echo "13 est premier ? " . (estPremier(13) ? "oui" : "non") . PHP_EOL;
+
+// ===== Étape 3 =====
+echo "TTC de 100 : " . calculerTTC(100) . PHP_EOL;
+echo "Remise 10% sur 200 : " . calculerRemise(200, 10) . PHP_EOL;
+
+$montant = calculerFacture(100, 10, 10, 20);
+echo "Facture : " . number_format($montant, 2, ",", " ") . " MAD" . PHP_EOL;
